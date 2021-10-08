@@ -27,13 +27,13 @@ export function activate(context: vscode.ExtensionContext) {
     let configuration = vscode.workspace.getConfiguration();
     let value = configuration.get(constant.IntelliSenseConfigurationEnabled);
 
-    LogManager.verbose('elasticdeveloper extension activated');
-    LogManager.verbose('elasticdeveloper decorating EnvironmentManager');
+    LogManager.verbose('esreed extension activated');
+    LogManager.verbose('esreed decorating EnvironmentManager');
 
     EnvironmentManager.decorateWith(WorkspaceEnvironmentManager.decorate(context));
     EnvironmentManager.decorateWith(HostEnvironmentManager.decorate());
-    
-    LogManager.verbose('elasticdeveloper loading controllers');
+
+    LogManager.verbose('esreed loading controllers');
 
     let controllers: Controller[] = [];
     controllers.push(new QueryCodeLensController());
@@ -46,19 +46,19 @@ export function activate(context: vscode.ExtensionContext) {
     controllers.push(new IndexCommandController());
     controllers.push(new ScriptCommandController());
     controllers.push(new IntellisenseCommandController());
-    
+
     if(value) {
         controllers.push(new QueryCompletionItemController());
     }
-    
-    LogManager.verbose('elasticdeveloper register controllers');
+
+    LogManager.verbose('esreed register controllers');
 
     for(let controller of controllers) {
         controller.register(context);
     }
 
     EnvironmentManager.init();
-    LogManager.verbose('elasticdeveloper done, the extension should now be ready. happy coding!');
+    LogManager.verbose('esreed done, the extension should now be ready. happy coding!');
 }
 
 export function deactivate() {

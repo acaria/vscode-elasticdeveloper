@@ -9,7 +9,7 @@ export class LogManager {
     protected _outputChannel: vscode.OutputChannel;
 
     constructor() {
-        this._outputChannel = vscode.window.createOutputChannel('elasticdeveloper');
+        this._outputChannel = vscode.window.createOutputChannel('esreed');
     }
 
     public static verbose(message:string, ...args:any[]) {
@@ -37,17 +37,17 @@ export class LogManager {
         if(message) {
 
             let position = message.indexOf('%s')
-    
+
             if(position > -1) {
-    
+
                 if(Array.isArray(args[0])) {
                     args = args[0];
                 }
-    
+
                 for(let index in args) {
-                    
+
                     let value = args[index];
-    
+
                     if(!value) {
                         value = '';
                     }
@@ -55,9 +55,9 @@ export class LogManager {
                     message = message.replace('%s', value);
                 }
             }
-        
+
             this._outputChannel.appendLine('['+ type +'] ' + message);
-    
+
             if(showAsNotification) {
                 this.showNotification(type, message);
             }
@@ -87,7 +87,7 @@ export class LogManager {
         if(!_logManager) {
             _logManager = new LogManager();
         }
-    
+
         return _logManager;
     }
 

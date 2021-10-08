@@ -5,14 +5,14 @@ import * as constant from '../../constant'
 import { ITreeNode, EnvironmentsParentTreeNode, IParentTreeNode, ParentTreeNode } from './models/interfaces';
 import { EnvironmentController } from "../../controllers/environmentController";
 
-export class EnvironmentTreeDataProviderController  extends EnvironmentController 
+export class EnvironmentTreeDataProviderController  extends EnvironmentController
     implements vscode.TreeDataProvider<ITreeNode> {
 
     private _onDidChangeTreeDataEmitter: vscode.EventEmitter<ITreeNode>;
 
     public initiate() {
         this._onDidChangeTreeDataEmitter = new vscode.EventEmitter<ITreeNode>();
-        vscode.window.registerTreeDataProvider('elasticdeveloper-explorer', this);
+        vscode.window.registerTreeDataProvider('esreed-explorer', this);
 
         this.registerCommand(constant.ExplorerCommandRefreshNode, (input)=> { this.refresh(input) });
     }
@@ -20,7 +20,7 @@ export class EnvironmentTreeDataProviderController  extends EnvironmentControlle
     public get onDidChangeTreeData(): vscode.Event<ITreeNode> {
         return this._onDidChangeTreeDataEmitter.event;
     }
-    
+
     public async getTreeItem(element: ITreeNode): Promise<vscode.TreeItem> {
 
         await element.prepare();
@@ -34,9 +34,9 @@ export class EnvironmentTreeDataProviderController  extends EnvironmentControlle
             contextValue: element.contextValue
         };
     }
-    
+
     public async getChildren(treeNode?: ITreeNode): Promise<ITreeNode[]> {
-        
+
         let children:ITreeNode[] = [];
 
         if(treeNode instanceof ParentTreeNode) {
@@ -47,7 +47,7 @@ export class EnvironmentTreeDataProviderController  extends EnvironmentControlle
 
         return children;
     }
-    
+
     public getParent?(element: ITreeNode): vscode.ProviderResult<ITreeNode> {
         return null;
     }

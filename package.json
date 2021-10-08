@@ -1,21 +1,22 @@
 {
-  "name": "elasticdeveloper",
-  "displayName": "Elasticsearch Developer tool",
+  "name": "esreed",
+  "displayName": "ElasticSearch Reed tool",
   "description": "Has autocomplete support and other features",
-  "version": "1.2.14",
+  "version": "1.0.0",
   "license": "MIT",
   "preview": false,
-  "publisher": "crasnam",
+  "publisher": "acaria",
   "engines": {
     "vscode": "^1.30.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Crasnam/vscode-elasticdeveloper.git"
+    "url": "https://github.com/acaria/vscode-elasticdeveloper.git"
   },
   "bugs": {
-    "url": "https://github.com/Crasnam/vscode-elasticdeveloper/issues"
+    "url": "https://github.com/acaria/vscode-elasticdeveloper/issues"
   },
+  "icon": "images/reedlogo.png",
   "categories": [
     "Programming Languages",
     "Other"
@@ -27,12 +28,12 @@
   "activationEvents": [
     "onLanguage:esquery",
     "onLanguage:esenv",
-    "onLanguage:esind"
+    "onLanguage:esidx"
   ],
   "main": "./out/extension",
   "contributes": {
     "configuration": {
-      "title": "Elasticsearch Developer tool",
+      "title": "ES Reed tool",
       "properties": {
         "elasticdeveloper.intelliSense.openEndpointDocumentation.enabled": {
           "type": "boolean",
@@ -48,95 +49,95 @@
     },
     "commands": [
       {
-        "command": "elasticdeveloper.query.runAll",
+        "command": "esreed.query.runAll",
         "title": "Run all queries"
       },
       {
-        "command": "elasticdeveloper.indexTemplate.deploy",
+        "command": "esreed.indexTemplate.deploy",
         "title": "Deploy index template"
       },
       {
-        "command": "elasticdeveloper.indexTemplate.retract",
+        "command": "esreed.indexTemplate.retract",
         "title": "Retract index template"
       },
       {
-        "command": "elasticdeveloper.indexTemplate.retract.fromExplorer",
+        "command": "esreed.indexTemplate.retract.fromExplorer",
         "title": "Retract"
       },
       {
-        "command": "elasticdeveloper.indexTemplate.compare.fromExplorer",
+        "command": "esreed.indexTemplate.compare.fromExplorer",
         "title": "Compare"
       },
       {
-        "command": "elasticdeveloper.indexTemplate.createFile.fromExplorer",
+        "command": "esreed.indexTemplate.createFile.fromExplorer",
         "title": "Create file"
       },
       {
-        "command": "elasticdeveloper.script.retract.fromExplorer",
+        "command": "esreed.script.retract.fromExplorer",
         "title": "Retract"
       },
       {
-        "command": "elasticdeveloper.environment.ping",
+        "command": "esreed.environment.ping",
         "title": "Ping environment"
       },
       {
-        "command": "elasticdeveloper.environment.ping.fromExplorer",
+        "command": "esreed.environment.ping.fromExplorer",
         "title": "Ping environment"
       },
       {
-        "command": "elasticdeveloper.environment.setAsTarget",
+        "command": "esreed.environment.setAsTarget",
         "title": "Set as target environment"
       },
       {
-        "command": "elasticdeveloper.environment.setAsTarget.fromExplorer",
+        "command": "esreed.environment.setAsTarget.fromExplorer",
         "title": "Set as target environment"
       },
       {
-        "command": "elasticdeveloper.environment.openFile.fromExplorer",
+        "command": "esreed.environment.openFile.fromExplorer",
         "title": "Open file"
       },
       {
-        "command": "elasticdeveloper.index.delete.fromExplorer",
+        "command": "esreed.index.delete.fromExplorer",
         "title": "Delete"
       },
       {
-        "command": "elasticdeveloper.explorer.refreshNode.fromExplorer",
+        "command": "esreed.explorer.refreshNode.fromExplorer",
         "title": "Refresh"
       },
       {
-        "command": "elasticdeveloper.intelliSense.streamGraph",
+        "command": "esreed.intelliSense.streamGraph",
         "title": "Stream intelliSense graph to Gephi"
       },
       {
-        "command": "elasticdeveloper.intelliSense.openEndpointDocumentation.fromEditorContext",
+        "command": "esreed.intelliSense.openEndpointDocumentation.fromEditorContext",
         "title": "Open endpoint documentation"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "command": "elasticdeveloper.environment.setAsTarget",
+          "command": "esreed.environment.setAsTarget",
           "when": "resourceExtname == .esenv",
           "group": "2_workspace"
         },
         {
-          "command": "elasticdeveloper.environment.ping",
+          "command": "esreed.environment.ping",
           "when": "resourceExtname == .esenv",
           "group": "2_workspace"
         },
         {
-          "command": "elasticdeveloper.query.runAll",
+          "command": "esreed.query.runAll",
           "when": "resourceExtname == .esquery",
           "group": "2_workspace"
         },
         {
-          "command": "elasticdeveloper.indexTemplate.deploy",
-          "when": "resourceExtname == .esind",
+          "command": "esreed.indexTemplate.deploy",
+          "when": "resourceExtname == .esidx",
           "group": "7_modification"
         },
         {
-          "command": "elasticdeveloper.indexTemplate.retract",
-          "when": "resourceExtname == .esind",
+          "command": "esreed.indexTemplate.retract",
+          "when": "resourceExtname == .esidx",
           "group": "7_modification"
         }
       ],
@@ -144,7 +145,7 @@
       "editor/title": [],
       "editor/context": [
         {
-          "command": "elasticdeveloper.intelliSense.openEndpointDocumentation.fromEditorContext",
+          "command": "esreed.intelliSense.openEndpointDocumentation.fromEditorContext",
           "when": "resourceExtname == .esquery",
           "group": "navigation"
         }
@@ -152,46 +153,46 @@
       "commandPalette": [],
       "view/item/context": [
         {
-          "command": "elasticdeveloper.explorer.refreshNode.fromExplorer",
+          "command": "esreed.explorer.refreshNode.fromExplorer",
           "group": "navigation"
         },
         {
-          "command": "elasticdeveloper.environment.ping.fromExplorer",
+          "command": "esreed.environment.ping.fromExplorer",
           "when": "viewItem == environment",
           "group": "2_workspace"
         },
         {
-          "command": "elasticdeveloper.environment.setAsTarget.fromExplorer",
+          "command": "esreed.environment.setAsTarget.fromExplorer",
           "when": "viewItem == environment",
           "group": "2_workspace"
         },
         {
-          "command": "elasticdeveloper.environment.openFile.fromExplorer",
+          "command": "esreed.environment.openFile.fromExplorer",
           "when": "viewItem == environment",
           "group": "navigation"
         },
         {
-          "command": "elasticdeveloper.index.delete.fromExplorer",
+          "command": "esreed.index.delete.fromExplorer",
           "when": "viewItem == index",
           "group": "7_modification"
         },
         {
-          "command": "elasticdeveloper.indexTemplate.retract.fromExplorer",
+          "command": "esreed.indexTemplate.retract.fromExplorer",
           "when": "viewItem == indexTemplate",
           "group": "7_modification"
         },
         {
-          "command": "elasticdeveloper.script.retract.fromExplorer",
+          "command": "esreed.script.retract.fromExplorer",
           "when": "viewItem == script",
           "group": "7_modification"
         },
         {
-          "command": "elasticdeveloper.indexTemplate.compare.fromExplorer",
+          "command": "esreed.indexTemplate.compare.fromExplorer",
           "when": "viewItem == indexTemplate",
           "group": "3_compare"
         },
         {
-          "command": "elasticdeveloper.indexTemplate.createFile.fromExplorer",
+          "command": "esreed.indexTemplate.createFile.fromExplorer",
           "when": "viewItem == indexTemplate",
           "group": "7_modification"
         }
@@ -222,22 +223,22 @@
         "configuration": "./languages/esenv-configuration.json"
       },
       {
-        "id": "esind",
+        "id": "esidx",
         "aliases": [
           "Elasticsearch Index template",
-          "esind"
+          "esidx"
         ],
         "extensions": [
-          ".esind"
+          ".esidx"
         ],
-        "configuration": "./languages/esind-configuration.json"
+        "configuration": "./languages/esidx-configuration.json"
       }
     ],
     "grammars": [
       {
-        "language": "esind",
-        "scopeName": "source.esind",
-        "path": "./syntaxes/esind.tmLanguage.json"
+        "language": "esidx",
+        "scopeName": "source.esidx",
+        "path": "./syntaxes/esidx.tmLanguage.json"
       },
       {
         "language": "esenv",
@@ -252,7 +253,7 @@
     ],
     "keybindings": [
       {
-        "command": "elasticdeveloper.query.runAll.fromTextEditor",
+        "command": "esreed.query.runAll.fromTextEditor",
         "key": "alt+enter",
         "when": "resourceLangId == 'esquery'"
       }
@@ -260,7 +261,7 @@
     "views": {
       "explorer": [
         {
-          "id": "elasticdeveloper-explorer",
+          "id": "esreed-explorer",
           "name": "Elasticsearch Explorer"
         }
       ]
@@ -271,18 +272,20 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "package": "npx vsce package -o \"esreed.vsix\""
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.12.7",
     "typescript": "^3.7.2",
-    "vscode": "^1.1.36"
+    "vscode": "^1.1.37"
   },
   "dependencies": {
     "handlebars": "^4.5.3",
     "path": "^0.12.7",
     "request": "^2.88.0",
-    "tmp": "^0.1.0"
+    "tmp": "^0.1.0",
+    "vsce": "^1.100.1"
   }
 }

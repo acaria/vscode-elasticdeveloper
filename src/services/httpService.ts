@@ -11,7 +11,7 @@ export class HttpService {
     private _rootFolder:string;
 
     constructor(portNumber:number, rootFolder:string) {
-        this._outputChannel = vscode.window.createOutputChannel('Elasticdeveloper HTTP');
+        this._outputChannel = vscode.window.createOutputChannel('esreed HTTP');
         this._portNumber = portNumber;
         this._rootFolder = path.join(rootFolder, '.wwwroot');
     }

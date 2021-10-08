@@ -17,7 +17,7 @@ export class ElasticService {
         this._userAgent = userAgent;
 
         if(!this._userAgent) {
-            this._userAgent = "elasticdeveloper";
+            this._userAgent = "esreed";
         }
     }
 

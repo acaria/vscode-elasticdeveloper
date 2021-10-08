@@ -23,10 +23,10 @@ export class WorkspaceEnvironmentManagerDecorator extends EnvironmentManagerDeco
 
         vscode.workspace.onDidSaveTextDocument(this.onDidSaveTextDocument);
 
-        let files:vscode.Uri[]  = await vscode.workspace.findFiles('**/*.{esind}');
-        
+        let files:vscode.Uri[]  = await vscode.workspace.findFiles('**/*.{esidx}');
+
         for(let file of files) {
-            this.addIndexWithUri(file);   
+            this.addIndexWithUri(file);
         }
 
     }
@@ -48,13 +48,13 @@ export class WorkspaceEnvironmentManagerDecorator extends EnvironmentManagerDeco
     }
 
     public set environment(value:Environment) {
-        
+
         this.updateWorkspaceState(WorkspaceStateEnvironmentTargetKey, value);
         super.environment = value;
     }
 
     private onDidSaveTextDocument(e:vscode.TextDocument) {
-        
+
         if(e.languageId === 'esind') {
             this.addIndexWithUri(e.uri);
         }
@@ -87,7 +87,7 @@ export function decorate(context:vscode.ExtensionContext) {
     return (manager) => {
         let decoratedManager = new WorkspaceEnvironmentManagerDecorator(context, manager);
         decoratedManager.init();
-        
+
         return decoratedManager;
     }
 }

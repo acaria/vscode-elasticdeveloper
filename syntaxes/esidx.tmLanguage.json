@@ -1,6 +1,6 @@
 {
 	"name": "Elasticsearch Index template",
-	"scopeName": "source.esind",
+	"scopeName": "source.esidx",
 	"patterns": [
 		{
 			"include": "#value"

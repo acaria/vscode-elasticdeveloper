@@ -1,6 +1,6 @@
 'use strict';
 
-export const Name = 'elasticdeveloper';
+export const Name = 'esreed';
 export const Publisher = 'crasnam';
 export const ExtensionId = Publisher + '.' + Name;
 export const WorkspaceStateEnvironmentPath = 'environment.path';
