@@ -22,7 +22,7 @@ export const ElasticsearchQueryCommandRunAllQueries = 'query.runAll';
 /**
  * IndexTemplate
  */
-export const IndexTemplateLanguageId = 'esind';
+export const IndexTemplateLanguageId = 'esidx';
 export const IndexTemplateDocumentSelector = IndexTemplateLanguageId;
 export const IndexTemplateCodeLensCommandDeploy = 'indexTemplate.deploy.fromCodeLens';
 export const IndexTemplateCommandDeploy = 'indexTemplate.deploy';

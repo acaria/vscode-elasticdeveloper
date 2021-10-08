@@ -11,10 +11,13 @@ export class ElasticService {
 
     private _host: string;
     private _userAgent: string;
+    private _authorization: string;
 
-    constructor(host:string, userAgent:string) {
+    constructor(host:string, userAgent:string, userName:string, password: string) {
         this._host = host;
         this._userAgent = userAgent;
+        this._authorization = userName && password &&
+            "Basic " + Buffer.from(`${userName}:${password}`).toString("base64") || "";
 
         if(!this._userAgent) {
             this._userAgent = "esreed";
@@ -24,7 +27,9 @@ export class ElasticService {
     public static async execute(query:any, environment:any): Promise<ElasticsearchResponse> {
 
         let host:string;
-        let userAgent:string;
+        let userAgent: string;
+        let userName: string;
+        let password: string;
         let q:ElasticsearchQuery;
 
         if(!(query instanceof Object)) {
@@ -36,11 +41,13 @@ export class ElasticService {
         if(environment instanceof Object) {
             host = (environment as Environment).host;
             userAgent = (environment as Environment).userAgent;
+            userName = (environment as Environment).userName;
+            password = (environment as Environment).password;
         } else {
             host = environment as string;
         }
 
-        let service = new ElasticService(host, userAgent);
+        let service = new ElasticService(host, userAgent, userName, password);
         let response = await service.execute(q);
 
         if(q.hasName) {
@@ -70,14 +77,15 @@ export class ElasticService {
 
         let uri = this._host + url;
         let options: any = {
-            method: method,
-            url: uri,
-            body: body,
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': contentType,
-                'User-Agent': this._userAgent
-            }
+          method: method,
+          url: uri,
+          body: body,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": contentType,
+            "User-Agent": this._userAgent,
+            "Authorization": this._authorization,
+          },
         };
 
         return new Promise<ElasticsearchResponse>((resolve, reject)=> {

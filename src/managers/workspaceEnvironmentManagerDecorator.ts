@@ -55,7 +55,7 @@ export class WorkspaceEnvironmentManagerDecorator extends EnvironmentManagerDeco
 
     private onDidSaveTextDocument(e:vscode.TextDocument) {
 
-        if(e.languageId === 'esind') {
+        if(e.languageId === 'esidx') {
             this.addIndexWithUri(e.uri);
         }
     }
