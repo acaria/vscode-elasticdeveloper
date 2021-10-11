@@ -6,25 +6,22 @@ import * as constant from '../constant'
 import { EnvironmentController } from "./environmentController";
 import { Environment } from '../models/environment';
 import { EnvironmentDocument } from '../parsers/environmentDocument';
-import { TextToken } from '../models/textToken';
-import { EnvironmentManager } from '../managers/environmentManager';
 
-export class EnvironmentCodeLensController extends EnvironmentController 
+export class EnvironmentCodeLensController extends EnvironmentController
     implements vscode.CodeLensProvider {
-    
-    public onDidChangeCodeLenses?: vscode.Event<void>;
-    
-    public registerCommands() {
 
+    public onDidChangeCodeLenses?: vscode.Event<void>;
+
+    public registerCommands() {
         this.registerCommand(constant.EnvironmentCodeLensCommandPing, (environment) => { this.ping(environment) });
         this.registerCommand(constant.EnvironmentCodeLensCommandSetAsTarget, (environment) => { this.setAsTarget(environment) });
         this.registerCodeLensProvider(constant.EnvironmentDocumentSelector, this);
     }
 
     public provideCodeLenses(document: vscode.TextDocument, token: vscode.CancellationToken): vscode.ProviderResult<vscode.CodeLens[]> {
-        
+
         var codeLenses = [];
-        
+
         let text = document.getText();
         let environmentDocument = EnvironmentDocument.parse(text);
 
@@ -38,10 +35,10 @@ export class EnvironmentCodeLensController extends EnvironmentController
             let setTargetCodeLens = this.createSetTargetCodeLens(environment, document, range);
             codeLenses.push(setTargetCodeLens);
         }
-        
+
         return codeLenses;
     }
-    
+
     public resolveCodeLens?(codeLens: vscode.CodeLens, token: vscode.CancellationToken): vscode.ProviderResult<vscode.CodeLens> {
         return null;
     }

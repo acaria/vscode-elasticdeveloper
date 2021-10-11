@@ -2,7 +2,7 @@
 {
     "version": "0.1.0",
     "configurations": [
-        
+
         {
             "name": "Extension",
             "type": "extensionHost",
@@ -12,7 +12,7 @@
             "stopOnEntry": false,
             "sourceMaps": true,
             "outFiles": [ "${workspaceRoot}/out/**/*.js" ],
-            "preLaunchTask": "npm: watch"
+            "preLaunchTask": "watch"
         },
         {
             "name": "Extension Tests",

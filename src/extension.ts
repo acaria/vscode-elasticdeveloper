@@ -2,9 +2,9 @@
 
 import * as vscode from 'vscode';
 import * as constant from './constant';
-import * as FileSystemLoaderServiceSpecificationManager from './managers/fileSystemLoaderServiceSpecificationManagerDecorator';
 import * as WorkspaceEnvironmentManager from './managers/workspaceEnvironmentManagerDecorator';
 import * as HostEnvironmentManager from './managers/hostEnvironmentManagerDecorator';
+import * as StatusbarEnvironmentManager from './managers/statusbarEnvironmentManagerDecorator';
 
 import { LogManager } from './managers/logManager';
 import { EnvironmentManager } from './managers/environmentManager';
@@ -32,6 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     EnvironmentManager.decorateWith(WorkspaceEnvironmentManager.decorate(context));
     EnvironmentManager.decorateWith(HostEnvironmentManager.decorate());
+    EnvironmentManager.decorateWith(StatusbarEnvironmentManager.decorate(context));
 
     LogManager.verbose('esreed loading controllers');
 

@@ -1,11 +1,11 @@
 'use strict';
 
 export const Name = 'esreed';
-export const Publisher = 'crasnam';
+export const Publisher = 'acaria';
 export const ExtensionId = Publisher + '.' + Name;
 export const WorkspaceStateEnvironmentPath = 'environment.path';
 export const CommandPrefix = Name;
-export const DefaultVersion = '6.3';
+export const DefaultVersion = '6.5';
 
 export const JsonPathSeperatorChar = '/';
 
@@ -57,11 +57,17 @@ export const EnvironmentLanguageId = 'esenv';
 export const EnvironmentDocumentSelector = EnvironmentLanguageId;
 export const EnvironmentCodeLensCommandPing = 'environment.ping.fromCodeLens';
 export const EnvironmentExplorerCommandPing = 'environment.ping.fromExplorer';
+export const EnvironmentStatusCommandPing = "environment.ping.fromStatus";
 export const EnvironmentCommandPing = 'environment.ping';
 export const EnvironmentCodeLensCommandSetAsTarget = 'environment.setAsTarget.fromCodeLens';
 export const EnvironmentExplorerCommandSetAsTarget = 'environment.setAsTarget.fromExplorer';
 export const EnvironmentCommandSetAsTarget = 'environment.setAsTarget';
 export const EnvironmentExplorerCommandOpenFile = 'environment.openFile.fromExplorer';
+
+/**
+ * Event
+ */
+export const OnEnvironmentChanged = Name + ".environmentChanged";
 
 /**
  * ExplorerCommandRefreshNode

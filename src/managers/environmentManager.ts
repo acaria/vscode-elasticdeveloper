@@ -1,6 +1,7 @@
 'use strict'
 
 import * as vscode from 'vscode';
+import * as constant from "../constant";
 import { HttpService } from '../services/httpService';
 import { Environment } from "../models/environment";
 import { Index } from '../models/index';
@@ -32,7 +33,6 @@ export class EnvironmentManager {
         }
 
         return this._httpService;
-
     }
 
     public get environment(): Environment {
@@ -41,6 +41,7 @@ export class EnvironmentManager {
 
     public set environment(value:Environment) {
         this._environment = value;
+        vscode.commands.executeCommand(constant.OnEnvironmentChanged);
         this.notifyObservers('environment.changed');
     }
 
@@ -52,24 +53,24 @@ export class EnvironmentManager {
 
         if(index) {
            let exists = this._indices.find(i=> i.id === index.id);
-            
+
             if(!exists) {
                 this._indices.push(index);
                 this.notifyObservers('index.added');
-            }        
+            }
         }
     }
 
     public addIndices(indices:Index[]) {
-        
+
         for(let index of indices) {
-            
+
             if(index) {
                 let exists = this._indices.find(i=> i.id === index.id);
-            
+
                 if(!exists) {
                     this._indices.push(index);
-                }   
+                }
             }
          }
 
@@ -84,24 +85,24 @@ export class EnvironmentManager {
 
         if(alias) {
            let exists = this._indices.find(i=> i.id === alias.id);
-            
+
             if(!exists) {
                 this._aliases.push(alias);
                 this.notifyObservers('alias.added');
-            }        
+            }
         }
     }
 
     public addAliases(aliases:Index[]) {
-        
+
         for(let alias of aliases) {
-            
+
             if(alias) {
                 let exists = this._indices.find(i=> i.id === alias.id);
-            
+
                 if(!exists) {
                     this._aliases.push(alias);
-                }   
+                }
             }
          }
 
@@ -123,17 +124,17 @@ export class EnvironmentManager {
         if(!_environmentManager) {
             _environmentManager = new EnvironmentManager();
         }
-    
+
         return _environmentManager;
     }
-    
+
     public static init() {
         let environmentManager = this.get();
         let forceLoadEnv = environmentManager.environment;
     }
 
     public static decorateWith(decorate:any) {
-    
+
         let environmentManager = this.get();
         _environmentManager = decorate(environmentManager);
     }
